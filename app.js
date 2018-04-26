@@ -33,9 +33,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/student', studentRouter);
-app.use('/faculty', facultyRouter);
-app.get('/', async (req, res) => {
+app.use('/apiz/student', studentRouter);
+app.use('/apiz/faculty', facultyRouter);
+app.get('/apiz', async (req, res) => {
     res.send({
         faculty: await Faculty.find({}),
         student: await Student.find({}).populate('notifications.sender', 'name')
